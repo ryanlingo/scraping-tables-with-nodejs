@@ -6,8 +6,10 @@ async function main() {
     'https://www.codingwithstefan.com/table-example',
   );
   const $ = cheerio.load(result);
-  $('body > table > tbody > tr > td').each((index, element) => {
-    console.log($(element).text());
+  $('body > table > tbody > tr').each((index, element) => {
+    const tds = $(element).find('td');
+    const company = $(tds[0]).text();
+    console.log(company);
   });
 }
 
